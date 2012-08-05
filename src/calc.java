@@ -15,7 +15,7 @@ public class calc {
                 double firstValue = Double.parseDouble(reader.readLine());
 
                 out.print("Действие: ");
-                String operation = reader.readLine();
+                String operation = reader.readLine().trim();
 
                 String plus = "+";
                 String minus = "-";
