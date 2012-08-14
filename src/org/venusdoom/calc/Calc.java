@@ -1,8 +1,10 @@
 package org.venusdoom.calc;
-import static java.lang.System.out;
 
+import static java.lang.System.out;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import org.venusdoom.calc.calculations.Calculations;
+import org.venusdoom.calc.calculations.Operations;
 
 public class Calc {
 
@@ -12,6 +14,8 @@ public class Calc {
     public static final String DIVIDE = "/";
 
     public static void main(String[] args) {
+
+        Calculations op = new Operations();
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
@@ -27,17 +31,18 @@ public class Calc {
                 double secondValue = Double.parseDouble(reader.readLine());
 
                 if (operation.equals(PLUS)) {
-                    out.println("Результат: " + sum(firstValue, secondValue));
+                    out.println("Результат: " + op.sum(firstValue, secondValue));
                 } else if (operation.equals(MINUS)) {
-                    out.println("Результат: " + diff(firstValue, secondValue));
+                    out.println("Результат: " + op.diff(firstValue, secondValue));
                 } else if (operation.equals(MULTIPLICATE)) {
-                    out.println("Результат: " + mult(firstValue, secondValue));
+                    out.println("Результат: " + op.mult(firstValue, secondValue));
                 } else if (operation.equals(DIVIDE)) {
-                    out.println("Результат: " + div(firstValue, secondValue));
+                    out.println("Результат: " + op.div(firstValue, secondValue));
                 } else {
                     out.println("Неправильный ввод действия");
                     continue;
                 }
+
                 out.print("Для выхода введите команду - exit, иначе нажмите Enter: ");
                 String end = reader.readLine();
                 if (end.equals("exit")) {
@@ -50,19 +55,4 @@ public class Calc {
         }
     }
 
-    static double sum(double firstValue, double secondValue) {
-        return firstValue + secondValue;
-    }
-
-    static double diff(double firstValue, double secondValue) {
-        return firstValue - secondValue;
-    }
-
-    static double mult(double firstValue, double secondValue) {
-        return firstValue * secondValue;
-    }
-
-    static double div(double firstValue, double secondValue) {
-        return firstValue / secondValue;
-    }
 }
